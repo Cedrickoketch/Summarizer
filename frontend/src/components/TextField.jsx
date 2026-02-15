@@ -60,9 +60,9 @@ const TextField = ({ onSummarize }) => {
       <textarea
       value={text}
       onChange={(e) => setText(e.target.value)}
-      rows="8"
+      rows="6"
       disabled={loading}
-      className='font-secondary w-[90vw] bg-slate-700 rounded-xl p-8 md:text-2xl text-pretty'  
+      className='font-secondary w-[90vw] bg-slate-700 rounded-xl p-4 scrollbar-hidden md:text-2xl text-pretty'  
       placeholder='Paste something to summarize' />
 
       <button
