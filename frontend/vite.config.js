@@ -9,5 +9,6 @@ export default defineConfig({
     proxy: {
       '/summarize': 'http://localhost:5000'
     }
-  }
+  },
+  base: '/Summarizer/'
 })
