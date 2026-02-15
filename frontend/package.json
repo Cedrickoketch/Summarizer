@@ -1,7 +1,7 @@
 {
   "name": "summarizer-frontend",
   "proxy": "http://localhost:5000",
-  "homepage": "https://cedrickoketch.github.io/summarizer",
+  "homepage": "https://cedrickoketch.github.io/Summarizer",
   "private": true,
   "version": "0.0.0",
   "type": "module",
