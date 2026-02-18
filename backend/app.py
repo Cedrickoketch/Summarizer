@@ -6,6 +6,11 @@ import os
 app = Flask(__name__)
 CORS(app)  # ← Only thing needed!
 
+@app.route('/', methods=['GET'])
+def home():
+    return jsonify({"message": "Summarizer API ready! Use /summarize endpoint"})
+
+
 @app.route('/summarize', methods=['POST'])
 def summarize():
     data = request.json
