@@ -21,23 +21,22 @@ def home():
 @app.route('/summarize', methods=['POST'])
 def summarize():
     try:
-        data = request.get_json()  # ✅ Safe, handles bad JSON
-        if not data:
-            return jsonify({"error": "No JSON data"}), 400
-            
-        text = data.get('text', '').strip()
-        if not text:
+        data = request.get_json()
+        if not data or not data.get('text'):
             return jsonify({"error": "No text provided"}), 400
         
-        print(f"Summarizing {len(text)} chars")  # Render logs
+        text = data['text'][:2000]  # Limit length
         
-        response = ollama.chat(model='gemma:2b', messages=[{
-            'role': 'user', 
-            'content': f'Summarize: {text[:8000]}'
-        }])
+        # ✅ NO OLLAMA - Simple extractive summary
+        sentences = text.split('. ')
+        if len(sentences) <= 3:
+            summary = text[:300] + "..."
+        else:
+            summary = '. '.join(sentences[:3]) + "."
         
-        return jsonify({'summary': response['message']['content']})
+        print(f"✅ Summary generated: {len(summary)} chars")
+        return jsonify({'summary': summary})
         
     except Exception as e:
-        print(f"ERROR: {e}")  # Render logs
+        print(f"💥 ERROR: {e}")
         return jsonify({"error": str(e)}), 500
