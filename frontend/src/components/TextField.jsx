@@ -68,7 +68,7 @@ const TextField = ({ onSummarize }) => {
       <button
       onClick={handleSummarize}
       disabled={!text.trim() || loading}
-      className='font-primary md:text-4xl bg-slate-600 p-4 rounded-lg shadow-slate-950'
+      className='font-primary m-5 md:text-4xl bg-slate-600 p-4 rounded-lg shadow-slate-950'
       >
         {loading ? 'Summarizing...' : 'Generate Summary'}
       </button>
