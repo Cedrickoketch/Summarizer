@@ -17,7 +17,7 @@ const TextField = ({ onSummarize }) => {
       const controller = new AbortController();
       const timeout = setTimeout(() => controller.abort(), 90000);
 
-      const response = await fetch('http://localhost:5000/summarize', {
+      const response = await fetch('https://summarizer-w3ss.onrender.com', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json'},
         body: JSON.stringify({ text: text.trim() }),
